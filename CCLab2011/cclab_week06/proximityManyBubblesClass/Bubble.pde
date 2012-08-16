@@ -1,10 +1,10 @@
 class Bubble {
   
   //Properties
-  float posX;
-  float posY;
-  float bubbleWidth;
-  float bubbleHeight;
+  float x;
+  float y;
+  float w;
+  float h;
   
   color bubbleColor;
   color bubbleColor1;
@@ -16,10 +16,10 @@ class Bubble {
 
   //Constructor
   Bubble (float x, float y, float w, float h, color c, color c2) {
-    this.posX = x;
-    this.posY = y;
-    this.bubbleWidth = w;
-    this.bubbleHeight = h;
+    this.x = x;
+    this.y = y;
+    this.w = w;
+    this.h = h;
     
     this.bubbleColor = c;
     
@@ -38,21 +38,21 @@ class Bubble {
     pushMatrix();
 
     fill(this.bubbleColor);
-    ellipse(this.posX, this.posY, bubbleWidth, bubbleWidth);
+    ellipse(this.x, this.y, this.w, this.h);
 
     popMatrix();
   }
 
   void updateBubble(float _maxFrameSize) {
     //determines distance from mouseX/mouseY to center of bubble    
-    this.bubbleDistance = dist (mouseX, mouseY, posX, posY);
+    this.bubbleDistance = dist (mouseX, mouseY, this.x, this.y);
     
     //maps distance from mouseX/mouseY to size of circle        
-    this.bubbleWidth = map(this.bubbleDistance, 0, _maxFrameSize, 200, 0);
-    this.bubbleHeight = map(this.bubbleDistance, 0, _maxFrameSize, 200, 0);
+    this.w = map(this.bubbleDistance, 0, _maxFrameSize, 200, 0);
+    this.h = map(this.bubbleDistance, 0, _maxFrameSize, 200, 0);
 
     //maps distance to value that can be used for lerpColor
-    this.colorDist = map(this.bubbleDistance, 0, _maxFrameSize, 0.7, 0.0);
+    this.colorDist = map(this.bubbleDistance, 0, _maxFrameSize, 1.0, 0.0);
     
     //maps distance to value between very red and back
     this.bubbleColor = lerpColor(this.bubbleColor1, this.bubbleColor2, this.colorDist);

@@ -1,5 +1,5 @@
 // Declare an array which can contain 100 instances of the Ball class
-Ball[] ballArray = new Ball[100];
+Ball[] ballArray = new Ball[10];
 
 void setup() {
   size(800,600);

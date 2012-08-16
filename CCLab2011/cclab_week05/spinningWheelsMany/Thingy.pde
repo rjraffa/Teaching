@@ -1,11 +1,11 @@
 class Thingy {
 
   //Properties
-  float thingyPosX;
-  float thingyPosY;
-  float thingyWidth;
-  float thingyHeight;
-  color thingyColor;
+  float x;
+  float y;
+  float w;
+  float h;
+  color c;
 
   float thingyDistance;
   float thingyRotation;
@@ -14,11 +14,11 @@ class Thingy {
 
   //Constructor
   Thingy (float x, float y, float w, float h, color c) {
-    this.thingyPosX = x;
-    this.thingyPosY = y;
-    this.thingyWidth = w;
-    this.thingyHeight = h;
-    this.thingyColor = c;
+    this.x = x;
+    this.y = y;
+    this.w = w;
+    this.h = h;
+    this.c = c;
 
     //arbitrary numbers to give initial instance information
     this.thingyDistance = 100;
@@ -30,15 +30,15 @@ class Thingy {
   // Method or Function
   void drawThingy(float xPos, float yPos) {
     pushMatrix();
-    fill(this.thingyColor);
+    fill(this.c);
 
     translate(xPos, yPos);
     rotate(this.thingyRotation);
 
-    ellipse( -this.thingyPosX, -this.thingyPosY, this.thingyDistFromCenter, this.thingyDistFromCenter );
-    ellipse( this.thingyPosX, -this.thingyPosY, this.thingyDistFromCenter, this.thingyDistFromCenter );
-    ellipse( this.thingyPosX, this.thingyPosY, this.thingyDistFromCenter, this.thingyDistFromCenter );
-    ellipse( -this.thingyPosX, this.thingyPosY, this.thingyDistFromCenter, this.thingyDistFromCenter );
+    ellipse( -this.x, -this.y, this.thingyDistFromCenter, this.thingyDistFromCenter );
+    ellipse( this.x, -this.y, this.thingyDistFromCenter, this.thingyDistFromCenter );
+    ellipse( this.x, this.y, this.thingyDistFromCenter, this.thingyDistFromCenter );
+    ellipse( -this.x, this.y, this.thingyDistFromCenter, this.thingyDistFromCenter );
     popMatrix();
   }
 

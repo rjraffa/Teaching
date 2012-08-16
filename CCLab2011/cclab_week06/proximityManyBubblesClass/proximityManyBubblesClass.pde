@@ -1,5 +1,5 @@
 /* Proximity Many Bubbles */
-Bubble [] bubbleArray = new Bubble[300];
+Bubble [] bubbleArray = new Bubble[100];
 
 float maxFrameSize;
 

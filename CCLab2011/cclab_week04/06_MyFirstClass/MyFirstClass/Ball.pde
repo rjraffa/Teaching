@@ -1,27 +1,27 @@
 class Ball {
 
   // Properties
-  int ballPosX;
-  int ballPosY;
-  int ballWidth;
-  int ballHeight;
-  color ballColor;
+  int x;
+  int y;
+  int w;
+  int h;
+  color c;
   
   // Constructor
   // Constructor is used for intializing data for the object
   // when it is created
   Ball(int x,int y,int w,int h,color c) {
-    this.ballPosX = x;
-    this.ballPosY = y;
-    this.ballWidth = w;
-    this.ballHeight = h;
-    this.ballColor = c;
+    this.x = x;
+    this.y = y;
+    this.w = w;
+    this.h = h;
+    this.c = c;
   }
   
   // Method
   void drawBall() {
-  fill(this.ballColor);
-  ellipse( this.ballPosX, this.ballPosY, this.ballWidth, this.ballHeight);
+  fill(this.c);
+  ellipse( this.x, this.y, this.w, this.h);
   }
 
 }
