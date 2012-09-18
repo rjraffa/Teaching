@@ -26,8 +26,8 @@ int myColor;
 
 int [] myButton = new int [1];
 int [] myMultiToggle = new int [4];
-int xValue;
-int yValue;
+float xValue;
+float yValue;
 
 void setup() {
   size(500,400);
@@ -95,29 +95,33 @@ void draw() {
 // The following functions draw my boxes on screen
 void oscSounds(int theToggle[]){
    if (theToggle[0] == 1) {
-      sine.setFreq(yValue);
-      float pan = map(xValue, 60, 1000, 1, -1);
+      float freq = map(yValue, 0.0, 1.0, 1000, 60);
+      sine.setFreq(freq);
+      float pan = map(xValue, 0.0, 1.0, -1, 1);
       sine.setPan(pan);     
       sqa.setFreq(0);
       saw.setFreq(0);
       tri.setFreq(0);
    } if (theToggle[1] == 1) {
-      saw.setFreq(yValue);
-      float pan = map(xValue, 60, 1000, 1, -1);
+      float freq = map(yValue, 0.0, 1.0, 1000, 60);
+      saw.setFreq(freq);
+      float pan = map(xValue, 0.0, 1.0, -1, 1);
       saw.setPan(pan);
       sine.setFreq(0);
       sqa.setFreq(0);
       tri.setFreq(0);
    } if (theToggle[2] == 1) {
-      sqa.setFreq(yValue);
-      float pan = map(xValue, 60, 1000, 1, -1);
+      float freq = map(yValue, 0.0, 1.0, 1000, 60);
+      sqa.setFreq(freq);
+      float pan = map(xValue, 0.0, 1.0, -1, 1);
       sine.setFreq(0);
       sqa.setPan(pan);
       saw.setFreq(0);
       tri.setFreq(0);      
    } if (theToggle[3] == 1) {
-      tri.setFreq(yValue);
-      float pan = map(xValue, 60, 1000, 1, -1);
+      float freq = map(yValue, 0.0, 1.0, 1000, 60);
+      tri.setFreq(freq);
+      float pan = map(xValue, 0.0, 1.0, -1, 1);
       sine.setFreq(0);
       tri.setPan(pan);
       sqa.setFreq(0);
@@ -138,19 +142,19 @@ void oscEvent(OscMessage theOscMessage) {
 
   myMessage = theOscMessage.addrPattern();
 
-    if(myMessage.indexOf("/1/multitoggle1") !=-1){   // Filters out any other buttons
-    int i = (int((myMessage.charAt(16) )) - 0x30)-1;   // returns the ASCII number so convert into a real number by subtracting 0x30
+   if(myMessage.indexOf("/3/toggle") !=-1){   // Filters out any other buttons
+    int i = (int((myMessage.charAt(9) )) - 0x30)-1;   // returns the ASCII number so convert into a real number by subtracting 0x30
     myMultiToggle[i]  = int(theOscMessage.get(0).floatValue());     //  Puts button value into led[i]
-     }
+   }
 
-    if(myMessage.indexOf("/1/multixy1/1") !=-1){   // Filters out any other buttons
-    xValue  = int(theOscMessage.get(0).floatValue());     //  Puts button value into led[i]
-    yValue  = int(theOscMessage.get(1).floatValue());     //  Puts button value into led[i]   
+   if(myMessage.indexOf("/3/xy") !=-1){   // Filters out any other buttons
+    xValue  = theOscMessage.get(0).floatValue();     //  Puts button value into led[i]
+    yValue  = theOscMessage.get(1).floatValue();     //  Puts button value into led[i]   
+    println("XY received");
    }
 
 
     if(myMessage.indexOf("/1/toggle") !=-1){   // Filters out any push buttons
-    int i = int((myMessage.charAt(9) )) - 0x30;   // returns the ASCII number so convert into a real number by subtracting 0x30
     myButton[0]  = int(theOscMessage.get(0).floatValue());     //  Puts button value into led[i]
      }
 

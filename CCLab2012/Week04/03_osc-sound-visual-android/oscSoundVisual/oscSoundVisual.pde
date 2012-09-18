@@ -1,11 +1,11 @@
 /**
- * oscSound 
+ * oscSoundVisual 
  * CC Lab Fall 2012
  *
  * by Ryan Raffa
  * 09/17/12
  */
- 
+
 import oscP5.*;
 import netP5.*;
 
@@ -26,11 +26,16 @@ int myColor;
 
 int [] myButton = new int [1];
 int [] myMultiToggle = new int [4];
-int xValue;
-int yValue;
+float xValue;
+float yValue;
+
+int     radius;
+float	frequency, position;
+float   posOne, posTwo;
+
 
 void setup() {
-  size(500,400);
+  size(800,800,P3D);
   
   myButton[0] = 0;
   
@@ -66,6 +71,16 @@ void setup() {
   /* start oscP5, listening for incoming messages at port 8000 */
   oscP5 = new OscP5(this,8000);
   myColor = 0;
+    
+    //Sets the magnitude
+  radius        = 200;
+
+  //Sets rate of motion
+  frequency     = 200;
+  
+  //Provides initial position value
+  position      = 0;
+
   
 }
 
@@ -75,18 +90,43 @@ void draw() {
  if (myButton[0] == 1) {
    myColor = 255;
    stroke(0);
+   
+     // draw the waveforms
+    for(int i = 0; i < out.bufferSize()-1; i++) {
+      float x1 = map(i, 0, out.bufferSize(), 0, width);
+      float x2 = map(i+1, 0, out.bufferSize(), 0, width);
+      line(x1, height/2-50 + out.left.get(i)*50, x2, height/2-50 + out.left.get(i+1)*50);
+      line(x1, height/2+100 + out.right.get(i)*50, x2, height/2+100 + out.right.get(i+1)*50);
+    }
+
  } else {
    myColor = 0;
-   stroke(255);
+   stroke(255, 110);
+
+   pushMatrix();
+     translate(width/3, height/2);
+     for(int i = 0; i < out.bufferSize(); i++) {
+       float bufferSize = out.bufferSize();
+       float rad1 = (i/bufferSize)*TWO_PI;
+       float x1 = cos(rad1)*(radius+(out.left.get(i)*50));
+       float y1 = sin(rad1)*(radius+(out.left.get(i)*50));
+  
+       line(x1, y1, 0, 0);
+      }
+    popMatrix();
+
+   pushMatrix();
+     translate((width/3)*2, height/2);
+     for(int i = 0; i < out.bufferSize(); i++) {
+       float bufferSize = out.bufferSize();
+       float rad1 = (i/bufferSize)*TWO_PI;
+       float x1 = cos(rad1)*(radius+(out.right.get(i)*50));
+       float y1 = sin(rad1)*(radius+(out.right.get(i)*50));
+  
+       line(x1, y1, 0, 0);
+      }
+    popMatrix();
  }
-  // draw the waveforms
-  for(int i = 0; i < out.bufferSize()-1; i++)
-  {
-    float x1 = map(i, 0, out.bufferSize(), 0, width);
-    float x2 = map(i+1, 0, out.bufferSize(), 0, width);
-    line(x1, 50 + out.left.get(i)*50, x2, 50 + out.left.get(i+1)*50);
-    line(x1, 150 + out.right.get(i)*50, x2, 150 + out.right.get(i+1)*50);
-  }
   
   oscSounds(myMultiToggle);
 //  println(out.bufferSize());
@@ -95,29 +135,33 @@ void draw() {
 // The following functions draw my boxes on screen
 void oscSounds(int theToggle[]){
    if (theToggle[0] == 1) {
-      sine.setFreq(yValue);
-      float pan = map(xValue, 60, 1000, 1, -1);
+      float freq = map(yValue, 0.0, 1.0, 1000, 60);
+      sine.setFreq(freq);
+      float pan = map(xValue, 0.0, 1.0, -1, 1);
       sine.setPan(pan);     
       sqa.setFreq(0);
       saw.setFreq(0);
       tri.setFreq(0);
    } if (theToggle[1] == 1) {
-      saw.setFreq(yValue);
-      float pan = map(xValue, 60, 1000, 1, -1);
+      float freq = map(yValue, 0.0, 1.0, 1000, 60);
+      saw.setFreq(freq);
+      float pan = map(xValue, 0.0, 1.0, -1, 1);
       saw.setPan(pan);
       sine.setFreq(0);
       sqa.setFreq(0);
       tri.setFreq(0);
    } if (theToggle[2] == 1) {
-      sqa.setFreq(yValue);
-      float pan = map(xValue, 60, 1000, 1, -1);
+      float freq = map(yValue, 0.0, 1.0, 1000, 60);
+      sqa.setFreq(freq);
+      float pan = map(xValue, 0.0, 1.0, -1, 1);
       sine.setFreq(0);
       sqa.setPan(pan);
       saw.setFreq(0);
       tri.setFreq(0);      
    } if (theToggle[3] == 1) {
-      tri.setFreq(yValue);
-      float pan = map(xValue, 60, 1000, 1, -1);
+      float freq = map(yValue, 0.0, 1.0, 1000, 60);
+      tri.setFreq(freq);
+      float pan = map(xValue, 0.0, 1.0, -1, 1);
       sine.setFreq(0);
       tri.setPan(pan);
       sqa.setFreq(0);
@@ -138,14 +182,15 @@ void oscEvent(OscMessage theOscMessage) {
 
   myMessage = theOscMessage.addrPattern();
 
-    if(myMessage.indexOf("/1/multitoggle1") !=-1){   // Filters out any other buttons
-    int i = (int((myMessage.charAt(16) )) - 0x30)-1;   // returns the ASCII number so convert into a real number by subtracting 0x30
+   if(myMessage.indexOf("/3/toggle") !=-1){   // Filters out any other buttons
+    int i = (int((myMessage.charAt(9) )) - 0x30)-1;   // returns the ASCII number so convert into a real number by subtracting 0x30
     myMultiToggle[i]  = int(theOscMessage.get(0).floatValue());     //  Puts button value into led[i]
-     }
+   }
 
-    if(myMessage.indexOf("/1/multixy1/1") !=-1){   // Filters out any other buttons
-    xValue  = int(theOscMessage.get(0).floatValue());     //  Puts button value into led[i]
-    yValue  = int(theOscMessage.get(1).floatValue());     //  Puts button value into led[i]   
+   if(myMessage.indexOf("/3/xy") !=-1){   // Filters out any other buttons
+    xValue  = theOscMessage.get(0).floatValue();     //  Puts button value into led[i]
+    yValue  = theOscMessage.get(1).floatValue();     //  Puts button value into led[i]   
+    println("XY received");
    }
 
 
