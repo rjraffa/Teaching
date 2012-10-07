@@ -1,3 +1,11 @@
+/*
+ * Modulo
+ *
+ * CC Lab Fall 2011
+ * by Ryan Raffa
+ * 9/12/11
+ */
+
 int stateChange;
 int myColor;
 

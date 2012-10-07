@@ -1,3 +1,11 @@
+/*
+ * Arduino Digital Serial Out
+ *
+ * CC Lab Fall 2011
+ * by Ryan Raffa
+ * 10/10/11
+ */
+ 
 int sensorValue;
 int sensorPin;
 int ledPin;

@@ -1,3 +1,13 @@
+/*
+ * Bouncing
+ * Based on code from Dong Yoon Park
+ * http://www.cre8ive.kr/blog/
+ *
+ * CC Lab Fall 2011
+ * by Ryan Raffa
+ * 9/19/11
+ */
+
 Ball ball1;
 
 void setup() {

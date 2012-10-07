@@ -1,3 +1,11 @@
+/*
+ * Spinning Wheels
+ *
+ * CC Lab Fall 2011
+ * by Ryan Raffa
+ * 10/10/11
+ */
+
 // Creating instances of our object called "Thingy"
 Thingy myThingy1, myThingy2, myThingy3;
 

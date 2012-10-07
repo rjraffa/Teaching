@@ -1,4 +1,12 @@
 /*
+ * Sound Analysis
+ *
+ * CC Lab Fall 2011
+ * by Ryan Raffa
+ * 9/19/11
+ */
+
+/*
 Linear Averages
 */
 

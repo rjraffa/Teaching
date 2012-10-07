@@ -1,3 +1,11 @@
+/*
+ * Circle Analog Serial
+ *
+ * CC Lab Fall 2011
+ * by Ryan Raffa
+ * 10/10/11
+ */
+ 
 import processing.serial.*;
 
 Serial myPort;        // The serial port

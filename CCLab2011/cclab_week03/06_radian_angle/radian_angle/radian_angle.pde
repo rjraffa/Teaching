@@ -1,3 +1,11 @@
+/*
+ * Radian Angle
+ *
+ * CC Lab Fall 2011
+ * by Ryan Raffa
+ * 9/12/11
+ */
+
 //Angles can be converted from degrees to radians with the radians() function,
 //or vice versa using degrees().
 

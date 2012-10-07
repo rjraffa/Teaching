@@ -1,3 +1,11 @@
+/*
+ * Color Picker
+ *
+ * CC Lab Fall 2011
+ * by Ryan Raffa
+ * 9/12/11
+ */
+
 PImage testPhoto;
 float[] picValues = new float[664];
 float[] clickedValues = new float[300];

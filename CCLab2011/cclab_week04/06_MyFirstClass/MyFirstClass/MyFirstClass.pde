@@ -1,3 +1,11 @@
+/*
+ * My First Class
+ *
+ * CC Lab Fall 2011
+ * by Ryan Raffa
+ * 9/19/11
+ */
+
 Ball myBall1;
 Ball myBall2;
 

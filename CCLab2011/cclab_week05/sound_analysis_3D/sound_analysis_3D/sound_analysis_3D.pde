@@ -1,3 +1,11 @@
+/*
+ * Sound Analysis 3D
+ *
+ * CC Lab Fall 2011
+ * by Ryan Raffa
+ * 9/19/11
+ */
+
 import processing.opengl.*;
 
 import ddf.minim.analysis.*;

@@ -1,3 +1,11 @@
+/*
+ * Spinning Wheels Many
+ *
+ * CC Lab Fall 2011
+ * by Ryan Raffa
+ * 10/7/11
+ */
+ 
 // Creating instances of our object called "Thingy"
 Thingy [] thingyArray = new Thingy[200];
 

@@ -1,3 +1,11 @@
+/*
+ * My First Function
+ *
+ * CC Lab Fall 2012
+ * by Ryan Raffa
+ * 9/12/12
+ */
+
 int posX, posY;
 
 void setup () {

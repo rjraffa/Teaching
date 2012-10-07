@@ -1,3 +1,11 @@
+/*
+ * Proximity Bubbles Many
+ *
+ * CC Lab Fall 2011
+ * by Ryan Raffa
+ * 10/7/11
+ */
+
 /* Proximity Many Bubbles */
 Bubble [] bubbleArray = new Bubble[100];
 

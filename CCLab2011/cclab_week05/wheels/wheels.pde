@@ -1,3 +1,11 @@
+/*
+ * Wheels
+ *
+ * CC Lab Fall 2011
+s * by Ryan Raffa
+ * 9/19/11
+ */
+
 // Creating instances of our object called "Thingy"
 Thingy myThingy1;
 Thingy myThingy2;

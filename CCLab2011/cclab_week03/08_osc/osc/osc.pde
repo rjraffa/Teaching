@@ -1,3 +1,12 @@
+/*
+ * OSC
+ *
+ * CC Lab Fall 2011
+ * by Ryan Raffa
+ * 9/12/11
+ */
+
+
 import oscP5.*;
 import netP5.*;
 

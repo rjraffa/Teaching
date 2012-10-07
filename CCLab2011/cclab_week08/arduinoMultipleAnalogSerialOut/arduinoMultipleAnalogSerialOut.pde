@@ -1,3 +1,11 @@
+/*
+ * Arduino Multiple Analog Serial Out
+ *
+ * CC Lab Fall 2011
+ * by Ryan Raffa
+ * 10/19/11
+ */
+
  /*
  Based on code from Tom Igoe
  

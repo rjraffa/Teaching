@@ -1,3 +1,12 @@
+/*
+ * CC Lab Quiz
+ *
+ * CC Lab Fall 2012
+ * by Ryan Raffa
+ * 8/27/12
+ */
+
+
 int radius = 300;  //What is the difference between an int and a float?
 
 float [] xPos = new float [36];  //What are these called and what do they do?

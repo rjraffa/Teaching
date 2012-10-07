@@ -1,3 +1,13 @@
+/*
+ * TwoDMatrix
+ * Based on code from Dong Yoon Park
+ * http://www.cre8ive.kr/blog/
+ *
+ * CC Lab Fall 2011
+ * by Ryan Raffa
+ * 9/19/11
+ */
+
 // you don't need to import openGL here for this sketch
 // but you will need it for the in-class exercise
 import processing.opengl.*;

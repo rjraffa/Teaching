@@ -1,3 +1,11 @@
+/*
+ * Box
+ *
+ * CC Lab Fall 2011
+ * by Ryan Raffa
+ * 9/19/11
+ */
+
 void setup() {
   // P3D is Processing 3D
   // check out "size()" in reference

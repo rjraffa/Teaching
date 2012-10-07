@@ -1,3 +1,11 @@
+/*
+ * Rotate
+ *
+ * CC Lab Fall 2011
+ * by Ryan Raffa
+ * 9/19/11
+ */
+
 void setup() {
   size(800, 600, P3D);
   background(0);

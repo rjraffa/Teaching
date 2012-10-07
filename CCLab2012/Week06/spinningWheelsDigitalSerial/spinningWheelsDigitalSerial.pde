@@ -1,3 +1,11 @@
+/*
+ * Spinning Wheels Digital Serial
+ *
+ * CC Lab Fall 2012
+ * by Ryan Raffa
+ * 9/10/12
+ */
+
 import processing.serial.*;
 
 Thingy myThingy1;     // Creating instances of our object called "Thingy"

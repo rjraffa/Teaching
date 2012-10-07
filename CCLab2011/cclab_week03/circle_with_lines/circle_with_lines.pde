@@ -1,3 +1,13 @@
+/*
+ * Circle with Lines
+ * Based on code from Dong Yoon Park
+ * http://www.cre8ive.kr/blog/
+ *
+ * CC Lab Fall 2011
+ * by Ryan Raffa
+ * 8/27/11
+ */
+
 int radius = 300;
 
 void setup() {

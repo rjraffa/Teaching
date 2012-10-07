@@ -1,3 +1,11 @@
+/*
+ * Sliding Analog Serial
+ *
+ * CC Lab Fall 2012
+ * by Ryan Raffa
+ * 9/10/12
+ */
+
 import processing.serial.*;
 
 Serial myPort;        // The serial port

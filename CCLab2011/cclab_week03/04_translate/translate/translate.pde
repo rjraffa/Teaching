@@ -1,3 +1,11 @@
+/*
+ * Translate
+ *
+ * CC Lab Fall 2011
+ * by Ryan Raffa
+ * 9/12/11
+ */
+ 
 void setup() {
   size(600,300);
   background(0);

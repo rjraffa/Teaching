@@ -1,3 +1,11 @@
+/*
+ * Proximity Bubbles
+ *
+ * CC Lab Fall 2011
+ * by Ryan Raffa
+ * 10/3/11
+ */
+
 /* Proximity Bubbles */
 
 float bubbleOneX;

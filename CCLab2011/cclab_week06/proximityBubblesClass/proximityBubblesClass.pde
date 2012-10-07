@@ -1,3 +1,11 @@
+/*
+ * Proximity Bubbles Class
+ *
+ * CC Lab Fall 2011
+ * by Ryan Raffa
+ * 10/7/11
+ */
+
 /* Proximity Bubbles */
 Bubble bubbleOne, bubbleTwo, bubbleThree;
 float maxFrameSize;
