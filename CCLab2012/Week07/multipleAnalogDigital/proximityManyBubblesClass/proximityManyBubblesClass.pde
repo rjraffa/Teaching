@@ -1,30 +1,39 @@
 /*
- * Sliding Analog Digital Serial
+ * Proximity Bubbles Many
+ * with Arduino
  *
- * CC Lab Fall 2011
+ * CC Lab Fall 2012
  * by Ryan Raffa
- * 10/19/11
+ * 10/8/12
  */
 
 import processing.serial.*;
 Serial myPort;        // The serial port
 
-float circleWidth;
-float circleHeight;
+Bubble [] bubbleArray = new Bubble[100];
 
 int [] myAnalogValue = new int [6];
 int [] myDigitalValue = new int [5];
 
+float maxFrameSize;
+float posX;
+float posY;
 
 void setup() {
-  size (600, 600);
-  background(0);
-  smooth();
+  size(800,800);
+
   noStroke();
 
-  //setting the size of the circle
-  circleWidth = 200;
-  circleHeight = circleWidth;
+  //largest distance between 0,0 and width,height
+  maxFrameSize = dist(0,0,width,height);
+
+  for (int i = 0; i < bubbleArray.length; i++) {
+      bubbleArray[i] = new Bubble(random(20,width-20),random(20,height-20),0,0,color(0,0,0,40), color(255,0,0,40));
+  }
+  
+  //these values will be set with incoming values from Arduino
+  posX = 0.0;
+  posY = 0.0;
   
   // List all the available serial ports
   println(Serial.list());
@@ -32,23 +41,36 @@ void setup() {
   myPort = new Serial(this, Serial.list()[0], 9600);
   // don't generate a serialEvent() unless you get a newline character:
   myPort.bufferUntil('\n');
-
+  
 }
 
 void draw() {
+  background(0);
+
+  posX = map(myAnalogValue[0], 0, 1023, 0, width);
+  posY = map(myAnalogValue[1], 0, 1023, 0, height);
   
-     background(0);
-     
-     if(myDigitalValue[0] == 1) {
-      fill (255, 0, 0, 255);
-     } else {
-       fill(255, 0, 0, 120);
-     }
-      ellipse(myAnalogValue[0], myAnalogValue[1], circleWidth,circleHeight);
+  if (myDigitalValue[0] == 1) posY-=5;
+  if (myDigitalValue[1] == 1) posY+=5;
+  if (myDigitalValue[2] == 1) posX-=5;
+  if (myDigitalValue[3] == 1) posX+=5;
+      
+  if (posX <= 0) posX = 0;
+  if (posX >= width) posX = width;
   
+  if (posY <= 0) posY = 0;
+  if (posY >= height) posY = height;
+  
+  fill(255);
+  ellipse(posX, posY, 10,10);
+  
+  for (int i = 0; i < bubbleArray.length; i++) {
+      bubbleArray[i].updateBubble(maxFrameSize, posX, posY);
+      bubbleArray[i].drawBubble();
+  }
 }
 
- void serialEvent (Serial myPort) {
+void serialEvent (Serial myPort) {
    // get the ASCII string:
    String inString = myPort.readStringUntil('\n');
    println (inString);
@@ -79,6 +101,9 @@ void draw() {
       println("ValueDigitalPin4 "+ myDigitalValue[2]);
       println("ValueDigitalPin5 "+ myDigitalValue[3]);
       println("ValueDigitalPin6 "+ myDigitalValue[4]);
+      
+      println("posX " + posX);
+      println("posY " + posY);
 
       myPort.write("r");
-    }
+ }

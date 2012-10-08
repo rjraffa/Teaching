@@ -39,7 +39,7 @@ void setup()
 }
 
 void loop() {
-  // if we get a valid byte, read analog ins:
+  // if we get a valid byte, read analog/digital pins:
   if (Serial.available() > 0) {
     // get incoming byte:
     inByte = Serial.read();
@@ -55,7 +55,7 @@ void loop() {
     // delay 10ms to let the ADC recover:
     delay(10);
     
-    // read  switch, map it to 0 or 255L
+    // read  digital
     digitalSensor[0]   = digitalRead(2);
     digitalSensor[1]   = digitalRead(3);
     digitalSensor[2]   = digitalRead(4);
