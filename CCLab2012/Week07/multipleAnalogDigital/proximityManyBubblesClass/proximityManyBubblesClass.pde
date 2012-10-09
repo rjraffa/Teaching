@@ -46,14 +46,16 @@ void setup() {
 
 void draw() {
   background(0);
-
-  posX = map(myAnalogValue[0], 0, 1023, 0, width);
-  posY = map(myAnalogValue[1], 0, 1023, 0, height);
   
-  if (myDigitalValue[0] == 1) posY-=5;
-  if (myDigitalValue[1] == 1) posY+=5;
-  if (myDigitalValue[2] == 1) posX-=5;
-  if (myDigitalValue[3] == 1) posX+=5;
+  // 2 potentiometers on the analog value pins A0 and A1
+  posX = map(myAnalogValue[0], 0, 1023, 0, width); // analog pin 0
+  posY = map(myAnalogValue[1], 0, 1023, 0, height); //analog pin 1
+  
+  //or use 4 digital pins to control the movement
+//  if (myDigitalValue[0] == 1) posY-=5; //digital pin 2
+//  if (myDigitalValue[1] == 1) posY+=5; //digital pin 3
+//  if (myDigitalValue[2] == 1) posX-=5; //digital pin 4
+//  if (myDigitalValue[3] == 1) posX+=5; //digital pin 5
       
   if (posX <= 0) posX = 0;
   if (posX >= width) posX = width;
