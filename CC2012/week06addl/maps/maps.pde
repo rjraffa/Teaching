@@ -1,81 +1,114 @@
 /*
- * Comets
- * To show rotations on XY and Z axis
+ * Maps
+ * Moving through space with Final Fantasy
  *
  * CC Fall 2012
  * by Ryan Raffa
  * 10/05/12
  */
  
-int xOne, yOne;
-int xTwo, yTwo;
-int xThree, yThree;
+PVector mapPos;
+PVector characterPos;
 
-PImage psy;
-
-float deg, degTwo, degThree;
-float radOne, radTwo, radThree;
+PImage mainMap;
+PImage walkRightA;
+PImage walkRightB;
+PImage walkLeftA;
+PImage walkLeftB;
+PImage walkUpA;
+PImage walkUpB;
+PImage walkDownA;
+PImage walkDownB;
+PImage standing;
 
 void setup() {
  
- size(800,800, P3D);
- 
- xOne = -100;
- yOne = 0;
+  size(200,200);
+  background(255);
+  
+  mainMap = loadImage("ff_map.jpg");
+  walkRightA = loadImage("ff_character_walkRightA.png");
+  walkRightB = loadImage("ff_character_walkRightB.png");
+  walkLeftA = loadImage("ff_character_walkLeftA.png");
+  walkLeftB = loadImage("ff_character_walkLeftB.png");
+  walkUpA = loadImage("ff_character_walkUpA.png");
+  walkUpB = loadImage("ff_character_walkUpB.png");
+  walkDownA = loadImage("ff_character_walkDownA.png");
+  walkDownB = loadImage("ff_character_walkDownB.png");
+  standing = loadImage("ff_character_standing.png");
 
- xTwo = 0;
- yTwo = -100;
-
- xThree = 100;
- yThree = 0;
- 
- deg = 0.0;
- degTwo = 90.0;
- 
- psy = loadImage("PSY1.png");
- 
+  mapPos = new PVector(mainMap.width/2, mainMap.height/2);
+  characterPos = new PVector(width/2, height/2);
+  
 }
 
 void draw() {
- background(255);
- 
- rectMode(CENTER);
- translate(width/2,height/2);
 
- //red lines
- pushMatrix();
- 
- fill(0s);
- ellipse(0,0,50,50);
- 
- //red square
- deg+=2;
- if(deg > 360) deg = 0.0;
- radOne = radians(deg);
- rotateY(radOne);
- fill(255,0,0);
- rect(xOne, yOne, 50, 50);
+  imageMode(CENTER);
+  image(mainMap, mapPos.x, mapPos.y);
+  
+  
+  if (keyPressed == true) {
+      if (key == CODED) {
+        if (keyCode == UP) {
+          if(millis()%500 <= 250) { image(walkUpA,characterPos.x, characterPos.y); }
+          else { image(walkUpB,characterPos.x, characterPos.y); }
+          
+          if (mapPos.y < 223 && characterPos.y == 100) {
+            mapPos.y++;
+          } else if (characterPos.y > standing.height/2){
+            characterPos.y--;
+          }
+          
+          println("mapPos.y: " + mapPos.y);
+          println("characterPos.y: " + characterPos.y);
+          
+        }
+        if (keyCode == DOWN) {
+          if(millis()%500 <= 250) { image(walkDownA,characterPos.x, characterPos.y); }
+          else { image(walkDownB,characterPos.x, characterPos.y); }
+          
+          if (mapPos.y > -22 && characterPos.y == 100) {
+            mapPos.y--;
+          } else if (characterPos.y < height - standing.height/2){
+            characterPos.y++;
+          }
 
-   //psy face
-   translate(xThree, yThree); 
-   pushMatrix();
-   degTwo += 1/3;
-   if(degTwo > 360) degTwo = 0.0;
-   radTwo = radians(degTwo);
-   rotateY(radTwo);
-   image(psy, -50,-50);
-   popMatrix();
- 
- popMatrix();
+          println("mapPos.y: "+ mapPos.y);
+          println("characterPos.y: "+ characterPos.y);
+        } 
 
- //green circle
- pushMatrix(); 
- degThree-=4;
+        if (keyCode == RIGHT) {
+          if(millis()%500 <= 250) { image(walkRightA,characterPos.x, characterPos.y); }
+          else { image(walkRightB,characterPos.x, characterPos.y); }
+          
+          if (mapPos.x > -108 && characterPos.x == 100) {
+            mapPos.x--;
+          } else if (characterPos.x < width-standing.width/2){
+            characterPos.x++;
+          }
 
- radThree = radians(degThree);
- rotate(radThree);
- fill(0,255,0);
- ellipse(xTwo*2, yTwo*2, 50, 50);
- popMatrix();
+          println("mapPos.x: "+ mapPos.x);
+          println("characterPos.x: "+ characterPos.x);
+        } 
+
+        if (keyCode == LEFT) {
+          if(millis()%500 <= 250) { image(walkLeftA,characterPos.x, characterPos.y); }
+          else { image(walkLeftB,characterPos.x, characterPos.y); }
+
+          if (mapPos.x < 312 && characterPos.x == 100) {
+            mapPos.x++;
+          } else if (characterPos.x > standing.width/2){
+            characterPos.x--;
+          }
+
+          println("mapPos.x: "+ mapPos.x);
+          println("characterPos.x: "+ characterPos.x);
+        } 
+      }
+  }
+  else {
+    image(standing, characterPos.x, characterPos.y);
+  }
   
 }

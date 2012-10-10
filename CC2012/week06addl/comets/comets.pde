@@ -45,7 +45,7 @@ void draw() {
  //red lines
  pushMatrix();
  
- fill(0s);
+ fill(0);
  ellipse(0,0,50,50);
  
  //red square
