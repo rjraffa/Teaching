@@ -1,4 +1,10 @@
-
+/*
+ * lines
+ *
+ * CC Fall 2012
+ * by Ryan Raffa
+ * 09/13/12
+ */
 
 void setup() {
   size(600,600);

@@ -12,13 +12,15 @@ int xTwo, yTwo;
 int xThree, yThree;
 
 PImage psy;
+PImage psyBody;
+PImage psyFire;
 
 float deg, degTwo, degThree;
 float radOne, radTwo, radThree;
 
 void setup() {
  
- size(800,800, P3D);
+ size(600,375, P3D);
  
  xOne = -100;
  yOne = 0;
@@ -33,19 +35,26 @@ void setup() {
  degTwo = 90.0;
  
  psy = loadImage("PSY1.png");
- 
+ psyBody = loadImage("PSY1_body.png");
+ psyFire = loadImage("PSY1_fire.png");
 }
 
 void draw() {
- background(255);
+ background(0);
+ 
+ 
  
  rectMode(CENTER);
- translate(width/2,height/2);
+ 
+ image(psyFire, 0, 0);
+ image(psyBody, 0, 0);
+ 
+ translate(width/2,height/3);
 
  //red lines
  pushMatrix();
  
- fill(0);
+ fill(255);
  ellipse(0,0,50,50);
  
  //red square

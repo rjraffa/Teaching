@@ -1,3 +1,11 @@
+/*
+ * Drawing Circles
+ *
+ * CC Fall 2012
+ * by Ryan Raffa
+ * 09/06/12
+ */
+ 
 int number = 5;
 
 void setup() {

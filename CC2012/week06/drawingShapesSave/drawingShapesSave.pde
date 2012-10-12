@@ -1,3 +1,11 @@
+/*
+ * Drawing Shapes Save
+ *
+ * CC Fall 2012
+ * by Ryan Raffa
+ * 10/04/12
+ */
+
 int posX;
 int posY;
 

@@ -2,7 +2,7 @@
  * Reflections
  * To show ways to reflect drawings
  *
- * CC Lab Fall 2012
+ * CC Fall 2012
  * by Ryan Raffa
  * 10/09/12
  */

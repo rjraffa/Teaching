@@ -1,7 +1,7 @@
 /*
  * Lines
  *
- * CC Lab Fall 2012
+ * CC Fall 2012
  * by Ryan Raffa
  * 09/20/12
  */

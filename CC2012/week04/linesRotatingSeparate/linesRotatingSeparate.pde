@@ -2,7 +2,7 @@
  * Lines Rotating Separate
  * To show rotations at different speeds
  *
- * CC Lab Fall 2012
+ * CC Fall 2012
  * by Ryan Raffa
  * 09/20/12
  */

@@ -1,4 +1,12 @@
-float radius = 0.25;
+/*
+ * xSpiral
+ *
+ * CC Fall 2012
+ * by Ryan Raffa
+ * 09/20/12
+ */
+ 
+ float radius = 0.25;
 
 float deg;
 

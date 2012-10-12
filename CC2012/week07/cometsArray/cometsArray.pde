@@ -2,7 +2,7 @@
  * Comets
  * To show rotations on XY and Z axis
  *
- * CC Lab Fall 2012
+ * CC Fall 2012
  * by Ryan Raffa
  * 10/05/12
  */
