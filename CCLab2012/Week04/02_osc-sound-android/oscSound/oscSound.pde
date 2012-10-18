@@ -130,8 +130,6 @@ void oscSounds(int theToggle[]){
 
 }
 
-
-
 // This receives the incoming OSC messages
 // more info at: http://www.sojamo.de/libraries/oscP5/
 void oscEvent(OscMessage theOscMessage) {
@@ -142,30 +140,29 @@ void oscEvent(OscMessage theOscMessage) {
 
   myMessage = theOscMessage.addrPattern();
 
-   if(myMessage.indexOf("/3/toggle") !=-1){   // Filters out any other buttons
-    int i = (int((myMessage.charAt(9) )) - 0x30)-1;   // returns the ASCII number so convert into a real number by subtracting 0x30
-    myMultiToggle[i]  = int(theOscMessage.get(0).floatValue());     //  Puts button value into led[i]
+   if(myMessage.indexOf("/3/toggle") !=-1){   // Filters for toggle
+     int i = (int((myMessage.charAt(9) )) - 0x30)-1;   // returns the ASCII number so convert into a real number by subtracting 0x30
+     myMultiToggle[i]  = int(theOscMessage.get(0).floatValue());     //  Puts value into variable
    }
 
-   if(myMessage.indexOf("/3/xy") !=-1){   // Filters out any other buttons
-    xValue  = theOscMessage.get(0).floatValue();     //  Puts button value into led[i]
-    yValue  = theOscMessage.get(1).floatValue();     //  Puts button value into led[i]   
-    println("XY received");
+   if(myMessage.indexOf("/3/xy") !=-1){   // Filters for 2D touch 
+     xValue  = theOscMessage.get(0).floatValue();     //  Puts value into variable
+     yValue  = theOscMessage.get(1).floatValue();     //  Puts value into variable   
+     println("XY received");
    }
 
+   if(myMessage.indexOf("/1/toggle") !=-1){   // Filters for toggle
+     myButton[0]  = int(theOscMessage.get(0).floatValue());     //  Puts value into global variable
+   }
 
-    if(myMessage.indexOf("/1/toggle") !=-1){   // Filters out any push buttons
-    myButton[0]  = int(theOscMessage.get(0).floatValue());     //  Puts button value into led[i]
-     }
-
-    println (myMessage);
-    println ("mybutton 0: "+myButton[0]);
-    println ("myMultiToggle 0: "+myMultiToggle[0]);
-    println ("myMultiToggle 1: "+myMultiToggle[1]);
-    println ("myMultiToggle 2: "+myMultiToggle[2]);
-    println ("myMultiToggle 3: "+myMultiToggle[3]);
-    println ("xValue: "+xValue);
-    println ("yValue: "+yValue);
+   println (myMessage);
+   println ("mybutton 0: "+myButton[0]);
+   println ("myMultiToggle 0: "+myMultiToggle[0]);
+   println ("myMultiToggle 1: "+myMultiToggle[1]);
+   println ("myMultiToggle 2: "+myMultiToggle[2]);
+   println ("myMultiToggle 3: "+myMultiToggle[3]);
+   println ("xValue: "+xValue);
+   println ("yValue: "+yValue);
 
 }
 
