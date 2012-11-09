@@ -54,7 +54,11 @@ void testApp::keyPressed(int key){
 		} else if(bFullscreen == 1){
 			ofSetFullscreen(true);
 		}
-	}
+
+	    // or we can just say
+        // ofToggleFullscreen();
+    
+    }
 
 }
 
